@@ -36,11 +36,13 @@ public class TestGson {
 
 
         //person
+        ////to Json
         Person person = newPerson();
-        String s1 = gson.toJson(person);//to Json
+        String s1 = gson.toJson(person);
         System.out.println("s1:" + s1);
+        ////to Bean
         Person person1 = gson.fromJson(s1, Person.class);
-        System.out.println("person1" + person1);//to Bean
+        System.out.println("person1" + person1);
         String s2 = GsonUtil.jsonFormatter(s1);
         System.out.println(s2);//格式化jsonStr
 

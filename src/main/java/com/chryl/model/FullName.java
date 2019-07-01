@@ -1,13 +1,21 @@
 package com.chryl.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 /**
+ * com.google.gson.annotations.SerializedName;
+ * 该注解使gson转换的json串指定为 想要的格式,
+ * "firstName": "chr"
+ * "first_name": "chr"
+ * <p>
  * Created By Chr on 2019/6/28.
  */
 
 public class FullName implements Serializable {
     private static final long serialVersionUID = -2593311365785253616L;
+    @SerializedName("first_name")
     private String firstName;
     private String middleName;
     private String lastName;
