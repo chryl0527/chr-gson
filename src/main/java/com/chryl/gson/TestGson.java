@@ -93,7 +93,7 @@ public class TestGson {
         return person;
     }
 
-    //拓展gson
+    //拓展gson,gson格式化配置
     public static void showGson() {
         //格式化输出、日期时间及其它
         Gson gson = new GsonBuilder()
@@ -112,6 +112,14 @@ public class TestGson {
 //                .setPrettyPrinting()
                 //在序列化和反序列化时，要不要将该字段接入操作
 //                .excludeFieldsWithoutExposeAnnotation()
+                /**
+                 * @Until是 <= 某Version
+                 *
+                 * @Since是 >= 某Version
+                 * 当前设置版本17 < @Since(18)此时，此时将不会输出age:
+                 */
+                //设置当前版本
+//                .setVersion(17)
                 //new Instance
                 .create();
 
