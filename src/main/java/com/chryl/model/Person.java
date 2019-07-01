@@ -1,16 +1,27 @@
 package com.chryl.model;
 
+import com.google.gson.annotations.Expose;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
 /**
+ * com.google.gson.annotations.Expose;
+ * <p>
+ * 在 序列化 和 反序列化 时，要不要将该字段接入操作:就是gson只接入标有该注解的字段,如果没有就不转化
+ * 该注解:要配合new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();使用
+ *
+ * @Expose(serialize = true, deserialize = true)
+ * <p>
  * Created By Chr on 2019/6/28.
  */
 public class Person implements Serializable {
     private static final long serialVersionUID = 3473792054110446622L;
     private String name;
+    //是否接入:序列化和反序列化
+    @Expose(serialize = true, deserialize = true)
     private FullName fullName;
     private int age;
     private Date birthday;

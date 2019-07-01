@@ -16,6 +16,15 @@ import java.util.*;
 public class TestGson {
 
     public static void main(String args[]) {
+        //1.未格式化
+//        showOne();
+
+        //2.格式化
+        showGson();
+    }
+
+    //第一次测试
+    public static void showOne() {
         Map<String, String> map = new HashMap<>();
         map.put("maa", "12");
         map.put("3", "12");
@@ -42,10 +51,9 @@ public class TestGson {
         System.out.println("s1:" + s1);
         ////to Bean
         Person person1 = gson.fromJson(s1, Person.class);
-        System.out.println("person1" + person1);
+        System.out.println("person1:" + person1);
         String s2 = GsonUtil.jsonFormatter(s1);
         System.out.println(s2);//格式化jsonStr
-
     }
 
     //new person
@@ -83,5 +91,33 @@ public class TestGson {
                 , friends);
 
         return person;
+    }
+
+    //拓展gson
+    public static void showGson() {
+        //格式化输出、日期时间及其它
+        Gson gson = new GsonBuilder()
+                //序列化null
+                .serializeNulls()
+                // 设置日期时间格式，另有2个重载方法
+                // 在序列化和反序化时均生效
+                .setDateFormat("yyyy-MM-dd")//yyyy-MM-dd HH:mm:ss
+                // 禁此序列化内部类
+                .disableInnerClassSerialization()
+                //生成不可执行的Json（多了 )]}' 这4个字符）:
+//                .generateNonExecutableJson()
+                //禁止转义html标签
+                .disableHtmlEscaping()
+                //格式化输出
+//                .setPrettyPrinting()
+                //在序列化和反序列化时，要不要将该字段接入操作
+//                .excludeFieldsWithoutExposeAnnotation()
+                //new Instance
+                .create();
+
+        //
+        Person person = TestGson.newPerson();
+        String s = gson.toJson(person);
+        System.out.println(s);
     }
 }
