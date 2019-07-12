@@ -1,5 +1,6 @@
 package com.chryl.gson;
 
+import com.chryl.model.FastJsonModel;
 import com.chryl.model.Person;
 import com.chryl.utils.FastJsonUtil;
 
@@ -8,6 +9,12 @@ import com.chryl.utils.FastJsonUtil;
  */
 public class TestFastJson {
     public static void main(String args[]) {
+        FastJsonModel fastJsonModel = new FastJsonModel("1029", "aim", "23");
+        String s = FastJsonUtil.bean2Json(fastJsonModel);
+        System.out.println(s);
+    }
+
+    public static void show() {
         Person person = TestGson.newPerson();
         String s = FastJsonUtil.bean2JsonFormatter(person);
         System.out.println(s);
