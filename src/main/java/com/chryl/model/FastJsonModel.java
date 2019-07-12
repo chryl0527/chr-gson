@@ -3,6 +3,7 @@ package com.chryl.model;
 import com.alibaba.fastjson.annotation.JSONField;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created By Chr on 2019/7/12.
@@ -30,11 +31,14 @@ public class FastJsonModel implements Serializable {
     private String aimName;
     @JSONField(ordinal = 3, name = "AimMax")
     private String aimMax;
+    @JSONField(format = "yyyyMMdd")
+    private Date date;
 
-    public FastJsonModel(String aimID, String aimName, String aimMax) {
+    public FastJsonModel(String aimID, String aimName, String aimMax, Date date) {
         this.aimID = aimID;
         this.aimName = aimName;
         this.aimMax = aimMax;
+        this.date = date;
     }
 
     public String getAimID() {
@@ -59,5 +63,13 @@ public class FastJsonModel implements Serializable {
 
     public void setAimMax(String aimMax) {
         this.aimMax = aimMax;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
